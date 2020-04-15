@@ -30,7 +30,7 @@ public class Main {
         return (T) constructor.newInstance(constructorArguments.toArray());
     }
 
-    private static Constructor<?> getFirstPublicConstructor(Class<?> clazz) throws NoSuchMethodException {
+    private static Constructor<?> getFirstPublicConstructor(Class<?> clazz) {
         Constructor<?>[] constructors = clazz.getDeclaredConstructors();
         if ( constructors.length == 0) {
             throw new IllegalStateException(String.format("No constructor has been found for class %s", clazz));
