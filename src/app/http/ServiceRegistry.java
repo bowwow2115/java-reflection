@@ -1,4 +1,4 @@
-package init.http;
+package app.http;
 
 import annotations.Initializer;
 import annotations.InitializerMethod;

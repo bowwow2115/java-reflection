@@ -1,4 +1,4 @@
-package init.databases;
+package app.databases;
 
 import annotations.Initializer;
 import annotations.InitializerMethod;

@@ -1,4 +1,4 @@
-package init;
+package app;
 
 import annotations.Initializer;
 import annotations.InitializerMethod;

@@ -1,4 +1,4 @@
-package init.configs;
+package app.configs;
 
 import annotations.Initializer;
 import annotations.InitializerMethod;

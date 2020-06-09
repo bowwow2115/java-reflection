@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) throws Throwable {
-        initialize("init", "init.configs", "init.databases", "init.http");
+        initialize("app", "app.configs", "app.databases", "app.http");
         // application logic
     }
 
@@ -23,7 +23,7 @@ public class Main {
         List<Class<?>> classes = getAllClasses(packageNames);
 
         for (Class<?> clazz : classes) {
-            if (clazz.getAnnotation(Initializer.class) == null) {
+            if (!clazz.isAnnotationPresent(Initializer.class)) {
                 continue;
             }
 
@@ -40,9 +40,7 @@ public class Main {
     private static List<Method> getAllInitializingMethods(Class<?> clazz) {
         List<Method> initializingMethods = new ArrayList<>();
         for (Method method : clazz.getDeclaredMethods()) {
-            InitializerMethod initializerMethodAnnotation = method.getAnnotation(InitializerMethod.class);
-
-            if (initializerMethodAnnotation != null) {
+            if(method.isAnnotationPresent(InitializerMethod.class)) {
                 initializingMethods.add(method);
             }
         }
