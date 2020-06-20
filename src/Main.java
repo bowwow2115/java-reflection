@@ -9,19 +9,19 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
-        SqlQueryBuilder sqlQueryBuilder = new SqlQueryBuilder(Arrays.asList("1" , "2", "3"), 10, "Movies",
+        SqlQueryBuilder sqlQueryBuilder = new SqlQueryBuilder(Arrays.asList("1", "2", "3"),
+                10,
+                "Movies",
                 Arrays.asList("Id", "Name"));
 
-        BestGamesFinder bestGamesFinder = new BestGamesFinder();
-
-        System.out.println((List<? extends String>)execute(bestGamesFinder));
+        String sqlQuery = execute(sqlQueryBuilder);
+        System.out.println(sqlQuery);
     }
 
     public static <T> T execute(Object instance) throws InvocationTargetException, IllegalAccessException {
         Class<?> clazz = instance.getClass();
 
         Map<String, Method> operationToMethod = getOperationToMethod(clazz);
-
         Map<String, Field> inputToField = getInputToField(clazz);
 
         Method finalResultMethod = findFinalResultMethod(clazz);
@@ -30,42 +30,47 @@ public class Main {
     }
 
     private static Object executeWithDependencies(Object instance,
-                                                  Method method,
+                                                  Method currentMethod,
                                                   Map<String, Method> operationToMethod,
-                                                  Map<String, Field> inputToField) throws IllegalAccessException, InvocationTargetException {
-        List<Object> parameterValues = new ArrayList<>(method.getParameterCount());
+                                                  Map<String, Field> inputToField) throws InvocationTargetException, IllegalAccessException {
+        List<Object> parameterValues = new ArrayList<>(currentMethod.getParameterCount());
 
-        for (Parameter parameter : method.getParameters()) {
+        for (Parameter parameter : currentMethod.getParameters()) {
             Object value = null;
-            if (parameter.isAnnotationPresent(Input.class)) {
-                Field field = inputToField.get(parameter.getAnnotation(Input.class).value());
+            if (parameter.isAnnotationPresent(DependsOn.class)) {
+                String dependencyOperationName = parameter.getAnnotation(DependsOn.class).value();
+                Method dependencyMethod = operationToMethod.get(dependencyOperationName);
 
+                value = executeWithDependencies(instance, dependencyMethod, operationToMethod, inputToField);
+            } else if (parameter.isAnnotationPresent(Input.class)) {
+                String inputName = parameter.getAnnotation(Input.class).value();
+
+                Field field = inputToField.get(inputName);
                 field.setAccessible(true);
 
                 value = field.get(instance);
-
-            } else if (parameter.isAnnotationPresent(DependsOn.class)) {
-                Method dependencyMethod = operationToMethod.get(parameter.getAnnotation(DependsOn.class).value());
-
-                value = executeWithDependencies(instance, dependencyMethod, operationToMethod, inputToField);
             }
 
             parameterValues.add(value);
         }
 
-        return method.invoke(instance, parameterValues.toArray());
+        return currentMethod.invoke(instance, parameterValues.toArray());
     }
 
-    private static Method findFinalResultMethod(Class<?> clazz) {
-        for (Method method : clazz.getDeclaredMethods()) {
-            if (method.isAnnotationPresent(FinalResult.class)){
-                return method;
+    private static Map<String, Field> getInputToField(Class<?> clazz) {
+        Map<String, Field> inputNameToField = new HashMap<>();
+
+        for (Field field : clazz.getDeclaredFields()) {
+            if (!field.isAnnotationPresent(Input.class)) {
+                continue;
             }
+
+            Input input = field.getAnnotation(Input.class);
+            inputNameToField.put(input.value(), field);
         }
 
-        throw new RuntimeException("No method found with FinalResult annotation");
+        return inputNameToField;
     }
-
 
     private static Map<String, Method> getOperationToMethod(Class<?> clazz) {
         Map<String, Method> operationNameToMethod = new HashMap<>();
@@ -79,22 +84,16 @@ public class Main {
 
             operationNameToMethod.put(operation.value(), method);
         }
-
         return operationNameToMethod;
     }
 
-    private static Map<String, Field> getInputToField(Class<?> clazz) {
-        Map<String, Field> inputToField = new HashMap<>();
-
-        for (Field field : clazz.getDeclaredFields()) {
-            if (!field.isAnnotationPresent(Input.class)) {
-                continue;
+    private static Method findFinalResultMethod(Class<?> clazz) {
+        for (Method method : clazz.getDeclaredMethods()) {
+            if (method.isAnnotationPresent(FinalResult.class)) {
+                return method;
             }
-
-            Input input = field.getAnnotation(Input.class);
-
-            inputToField.put(input.value(), field);
         }
-        return inputToField;
+
+        throw new RuntimeException("No method found with FinalResult annotation");
     }
 }

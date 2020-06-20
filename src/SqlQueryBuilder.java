@@ -1,6 +1,6 @@
-import java.util.List;
-
 import static annotations.Annotations.*;
+
+import java.util.List;
 
 public class SqlQueryBuilder {
 
@@ -16,7 +16,6 @@ public class SqlQueryBuilder {
     @Input("columns")
     private List<String> columnNames;
 
-
     public SqlQueryBuilder(List<String> ids, Integer limit, String tableName, List<String> columnNames) {
         this.ids = ids;
         this.limit = limit;
@@ -25,10 +24,10 @@ public class SqlQueryBuilder {
     }
 
     @Operation("SelectBuilder")
-    public String selectStatementBuilder(@Input("table") String tableName,  @Input("columns") List<String> columnNames) {
+    public String selectStatementBuilder(@Input("table") String tableName, @Input("columns") List<String> columnNames) {
         String columnsString = columnNames.isEmpty() ? "*" : String.join(",", columnNames);
 
-        return String.format("SELECT %s FROM %s", tableName, columnNames);
+        return String.format("SELECT %s FROM %s", tableName, columnsString);
     }
 
     @Operation("WhereClauseBuilder")
