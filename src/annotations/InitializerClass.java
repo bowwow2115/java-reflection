@@ -22,16 +22,14 @@
  *  SOFTWARE.
  */
 
-package app;
+package annotations;
 
-import annotations.InitializerClass;
-import annotations.InitializerMethod;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-@InitializerClass
-public class AutoSaver {
-
-    @InitializerMethod
-    public void startAutoSavingThreads() {
-        System.out.println("Start automatic data saving to disk");
-    }
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface InitializerClass {
 }
