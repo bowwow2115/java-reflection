@@ -22,8 +22,34 @@
  *  SOFTWARE.
  */
 
-import annotations.InitializerClass;
-import annotations.InitializerMethod;
+package com.reflection.annotaionex;/*
+ *  MIT License
+ *
+ *  Copyright (c) 2020 Michael Pogrebinsky - Java Reflection - Master Class
+ *
+ *  Permission is hereby granted, free of charge, to any person obtaining a copy
+ *  of this software and associated documentation files (the "Software"), to deal
+ *  in the Software without restriction, including without limitation the rights
+ *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *  copies of the Software, and to permit persons to whom the Software is
+ *  furnished to do so, subject to the following conditions:
+ *
+ *  The above copyright notice and this permission notice shall be included in all
+ *  copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *  SOFTWARE.
+ */
+
+import com.reflection.annotaionex.annotations.InitializerClass;
+import com.reflection.annotaionex.annotations.InitializerMethod;
+import com.reflection.annotaionex.annotations.RetryOperation;
+import com.reflection.annotaionex.annotations.ScanPackages;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -34,19 +60,26 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
  * Annotations - Application Initialization
  * https://www.udemy.com/course/java-reflection-master-class
  */
+@ScanPackages({"app", "com.reflection.annotaion.example.app.configs", "com.reflection.annotaion.example.app.databases", "com.reflection.annotaion.example.app.http"})
 public class Main {
 
     public static void main(String[] args) throws Throwable {
-        initialize("app", "app.configs", "app.databases", "app.http");
+        initialize();
     }
 
-    public static void initialize(String... packageNames) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException, ClassNotFoundException, IOException, URISyntaxException {
+    public static void initialize() throws Throwable {
+        ScanPackages scanPackages = Main.class.getAnnotation(ScanPackages.class);
+
+        if(scanPackages == null || scanPackages.value().length == 0) return;
+
+        String[] packageNames = scanPackages.value();
         List<Class<?>> classes = getAllClasses(packageNames);
 
         for (Class<?> clazz : classes) {
@@ -59,7 +92,31 @@ public class Main {
             Object instance = clazz.getDeclaredConstructor().newInstance();
 
             for (Method method : methods) {
+                callInitializingMethod(instance, method);
+            }
+        }
+    }
+
+    private static void callInitializingMethod(Object instance, Method method) throws Throwable {
+        RetryOperation retryOperation = method.getAnnotation(RetryOperation.class);
+
+        int numberOfRetires = retryOperation == null ? 0 : retryOperation.numberOfRetries();
+        while (true) {
+            try {
                 method.invoke(instance);
+                break;
+            } catch (InvocationTargetException e) {
+                Throwable targetException = e.getTargetException();
+
+                if (numberOfRetires > 0 && Set.of(retryOperation.retryExceptions()).contains(targetException.getClass())) {
+                    numberOfRetires--;
+                    System.out.println("Retrying....");
+                    Thread.sleep(retryOperation.durationBetweenRetriesMs());
+                } else if (retryOperation != null) {
+                    throw new Exception(retryOperation.failureMessage(), targetException);
+                } else {
+                    throw targetException;
+                }
             }
         }
     }

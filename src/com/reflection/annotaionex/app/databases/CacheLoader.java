@@ -22,16 +22,20 @@
  *  SOFTWARE.
  */
 
-package app.configs;
+package com.reflection.annotaionex.app.databases;
 
-import annotations.InitializerClass;
-import annotations.InitializerMethod;
+import com.reflection.annotaionex.annotations.InitializerClass;
+import com.reflection.annotaionex.annotations.InitializerMethod;
 
 @InitializerClass
-public class ConfigsLoader {
+public class CacheLoader {
 
     @InitializerMethod
-    public void loadAllConfigs() {
-        System.out.println("Loading all configuration files");
+    public void loadCache() {
+        System.out.println("Loading data from cache");
+    }
+
+    public void reloadCache() {
+        System.out.println("Reload cache");
     }
 }

@@ -22,10 +22,10 @@
  *  SOFTWARE.
  */
 
-package app.http;
+package com.reflection.annotaionex.app.http;
 
-import annotations.InitializerClass;
-import annotations.InitializerMethod;
+import com.reflection.annotaionex.annotations.InitializerClass;
+import com.reflection.annotaionex.annotations.InitializerMethod;
 
 @InitializerClass
 public class ServiceRegistry {

@@ -22,21 +22,14 @@
  *  SOFTWARE.
  */
 
-package app.databases;
+package com.reflection.annotaionex.annotations;
 
-import annotations.InitializerClass;
-import annotations.InitializerMethod;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-@InitializerClass
-public class DatabaseConnection {
-
-    @InitializerMethod
-    public void connectToDatabase1() {
-        System.out.println("Connecting to database 1");
-    }
-
-    @InitializerMethod
-    public void connectToDatabase2() {
-        System.out.println("Connecting to database 2");
-    }
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface InitializerClass {
 }
