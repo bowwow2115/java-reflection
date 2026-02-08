@@ -22,10 +22,10 @@
  *  SOFTWARE.
  */
 
-package annotaionex.app.configs;
+package annotationex.app.configs;
 
-import annotaionex.annotations.InitializerClass;
-import annotaionex.annotations.InitializerMethod;
+import annotationex.annotations.InitializerClass;
+import annotationex.annotations.InitializerMethod;
 
 @InitializerClass
 public class ConfigsLoader {

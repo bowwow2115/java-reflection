@@ -22,7 +22,7 @@
  *  SOFTWARE.
  */
 
-package annotaionex.app;
+package annotationex.app;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

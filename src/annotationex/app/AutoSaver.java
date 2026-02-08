@@ -22,10 +22,10 @@
  *  SOFTWARE.
  */
 
-package annotaionex.app;
+package annotationex.app;
 
-import annotaionex.annotations.InitializerClass;
-import annotaionex.annotations.InitializerMethod;
+import annotationex.annotations.InitializerClass;
+import annotationex.annotations.InitializerMethod;
 
 @InitializerClass
 public class AutoSaver {

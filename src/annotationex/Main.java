@@ -22,7 +22,7 @@
  *  SOFTWARE.
  */
 
-package annotaionex;/*
+package annotationex;/*
  *  MIT License
  *
  *  Copyright (c) 2020 Michael Pogrebinsky - Java Reflection - Master Class
@@ -46,10 +46,10 @@ package annotaionex;/*
  *  SOFTWARE.
  */
 
-import annotaionex.annotations.InitializerClass;
-import annotaionex.annotations.InitializerMethod;
-import annotaionex.annotations.RetryOperation;
-import annotaionex.annotations.ScanPackages;
+import annotationex.annotations.InitializerClass;
+import annotationex.annotations.InitializerMethod;
+import annotationex.annotations.RetryOperation;
+import annotationex.annotations.ScanPackages;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -67,7 +67,10 @@ import java.util.stream.Collectors;
  * Annotations - Application Initialization
  * https://www.udemy.com/course/java-reflection-master-class
  */
-@ScanPackages({"annotationex.app", "com.reflection.annotaion.example.app.configs", "com.reflection.annotaion.example.app.databases", "com.reflection.annotaion.example.app.http"})
+@ScanPackages({"annotationex.app",
+        "annotationex.app.configs",
+        "annotationex.app.databases",
+        "annotationex.app.http"})
 public class Main {
 
     public static void main(String[] args) throws Throwable {
@@ -136,9 +139,8 @@ public class Main {
 
         for (String packageName : packageNames) {
             String packageRelativePath = packageName.replace('.', '/');
-
-            URI packageUri = Main.class.getResource(packageRelativePath).toURI();
             packageRelativePath = "/" + packageRelativePath;
+            URI packageUri = Main.class.getResource(packageRelativePath).toURI();
             if (packageUri.getScheme().equals("file")) {
                 Path packageFullPath = Paths.get(packageUri);
                 allClasses.addAll(getAllPackageClasses(packageFullPath, packageName));

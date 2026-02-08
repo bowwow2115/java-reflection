@@ -22,10 +22,10 @@
  *  SOFTWARE.
  */
 
-package annotaionex.app.databases;
+package annotationex.app.databases;
 
-import annotaionex.annotations.InitializerClass;
-import annotaionex.annotations.InitializerMethod;
+import annotationex.annotations.InitializerClass;
+import annotationex.annotations.InitializerMethod;
 
 @InitializerClass
 public class CacheLoader {

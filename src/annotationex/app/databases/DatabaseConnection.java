@@ -22,11 +22,11 @@
  *  SOFTWARE.
  */
 
-package annotaionex.app.databases;
+package annotationex.app.databases;
 
-import annotaionex.annotations.InitializerClass;
-import annotaionex.annotations.InitializerMethod;
-import annotaionex.annotations.RetryOperation;
+import annotationex.annotations.InitializerClass;
+import annotationex.annotations.InitializerMethod;
+import annotationex.annotations.RetryOperation;
 
 import java.io.IOException;
 
