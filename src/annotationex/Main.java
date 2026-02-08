@@ -67,7 +67,7 @@ import java.util.stream.Collectors;
  * Annotations - Application Initialization
  * https://www.udemy.com/course/java-reflection-master-class
  */
-@ScanPackages({"app", "com.reflection.annotaion.example.app.configs", "com.reflection.annotaion.example.app.databases", "com.reflection.annotaion.example.app.http"})
+@ScanPackages({"annotationex.app", "com.reflection.annotaion.example.app.configs", "com.reflection.annotaion.example.app.databases", "com.reflection.annotaion.example.app.http"})
 public class Main {
 
     public static void main(String[] args) throws Throwable {
@@ -138,7 +138,7 @@ public class Main {
             String packageRelativePath = packageName.replace('.', '/');
 
             URI packageUri = Main.class.getResource(packageRelativePath).toURI();
-
+            packageRelativePath = "/" + packageRelativePath;
             if (packageUri.getScheme().equals("file")) {
                 Path packageFullPath = Paths.get(packageUri);
                 allClasses.addAll(getAllPackageClasses(packageFullPath, packageName));
