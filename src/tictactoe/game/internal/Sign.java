@@ -22,24 +22,20 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game.internal;
 
-class ComputerPlayer implements Player {
-    private static final String NAME = "Computer";
-    private final ComputerInputProvider locationProvider;
+enum Sign {
+    EMPTY(' '),
+    X('X'),
+    Y('Y');
 
-    public ComputerPlayer(ComputerInputProvider locationProvider) {
-        this.locationProvider = locationProvider;
+    private char value;
+
+    Sign(char value) {
+        this.value = value;
     }
 
-    @Override
-    public void play(Board board, Sign sign) {
-        BoardLocation location = locationProvider.provideNextMove(board);
-        board.updateCell(location.getRow(), location.getColumn(), sign);
-    }
-
-    @Override
-    public String getPlayerName() {
-        return NAME;
+    public char getValue() {
+        return this.value;
     }
 }

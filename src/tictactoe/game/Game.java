@@ -22,18 +22,9 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game;
 
-class BoardDimensions {
-    private static final int NUM_OF_ROWS = 3;
-    private static final int NUM_OF_COLUMNS = 3;
+public interface Game {
 
-
-    public int getNumberOfRows() {
-        return NUM_OF_ROWS;
-    }
-
-    public int getNumberOfColumns() {
-        return NUM_OF_COLUMNS;
-    }
+    void startGame();
 }

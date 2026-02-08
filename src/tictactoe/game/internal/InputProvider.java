@@ -22,11 +22,8 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game.internal;
 
-interface Player {
-
-    void play(Board board, Sign sign);
-
-    String getPlayerName();
+interface InputProvider {
+    BoardLocation provideNextMove(Board board);
 }

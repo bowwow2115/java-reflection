@@ -22,10 +22,10 @@
  *  SOFTWARE.
  */
 
-package init;
+package tictactoe.init;
 
-import game.Game;
-import game.internal.TicTacToeGame;
+import tictactoe.game.Game;
+import tictactoe.game.internal.TicTacToeGame;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

@@ -22,50 +22,50 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game.internal;
 
 class Board {
-    private game.internal.Cell[][] cells;
-    private game.internal.BoardDimensions dimensions;
+    private tictactoe.game.internal.Cell[][] cells;
+    private tictactoe.game.internal.BoardDimensions dimensions;
 
-    public Board(game.internal.BoardDimensions boardDimensions) {
+    public Board(tictactoe.game.internal.BoardDimensions boardDimensions) {
         this.dimensions = boardDimensions;
-        this.cells = new game.internal.Cell[boardDimensions.getNumberOfColumns()][boardDimensions.getNumberOfRows()];
+        this.cells = new tictactoe.game.internal.Cell[boardDimensions.getNumberOfColumns()][boardDimensions.getNumberOfRows()];
         initAllCells();
     }
 
     private void initAllCells() {
         for (int r = 0; r < dimensions.getNumberOfRows(); r++) {
             for (int c = 0; c < dimensions.getNumberOfColumns(); c++) {
-                this.cells[c][r] = new game.internal.Cell();
+                this.cells[c][r] = new tictactoe.game.internal.Cell();
             }
         }
     }
 
-    public void updateCell(int row, int column, game.internal.Sign sign) {
+    public void updateCell(int row, int column, tictactoe.game.internal.Sign sign) {
         this.cells[column][row].setSign(sign);
     }
 
-    public game.internal.Sign checkWinner() {
+    public tictactoe.game.internal.Sign checkWinner() {
         // Check rows
         for (int r = 0; r < dimensions.getNumberOfRows(); r++) {
-            game.internal.Sign sign = getRowWinner(r);
-            if (sign != game.internal.Sign.EMPTY) {
+            tictactoe.game.internal.Sign sign = getRowWinner(r);
+            if (sign != tictactoe.game.internal.Sign.EMPTY) {
                 return sign;
             }
         }
 
         // Check columns
         for (int c = 0; c < dimensions.getNumberOfColumns(); c++) {
-            game.internal.Sign sign = getColumnWinner(c);
-            if (sign != game.internal.Sign.EMPTY) {
+            tictactoe.game.internal.Sign sign = getColumnWinner(c);
+            if (sign != tictactoe.game.internal.Sign.EMPTY) {
                 return sign;
             }
         }
 
         // Check diagonal
-        game.internal.Sign sign = getDiagonalWinner(0, 0, 1, 1);
-        if (sign != game.internal.Sign.EMPTY) {
+        tictactoe.game.internal.Sign sign = getDiagonalWinner(0, 0, 1, 1);
+        if (sign != tictactoe.game.internal.Sign.EMPTY) {
             return sign;
         }
 
@@ -92,41 +92,41 @@ class Board {
         return true;
     }
 
-    private game.internal.Sign getColumnWinner(int currentColumn) {
-        game.internal.Sign initialSign = this.cells[currentColumn][0].getSign();
+    private tictactoe.game.internal.Sign getColumnWinner(int currentColumn) {
+        tictactoe.game.internal.Sign initialSign = this.cells[currentColumn][0].getSign();
 
-        if (initialSign == game.internal.Sign.EMPTY) {
+        if (initialSign == tictactoe.game.internal.Sign.EMPTY) {
             return initialSign;
         }
 
         for (int r = 1; r < dimensions.getNumberOfRows(); r++) {
             if (this.cells[currentColumn][r].getSign() != initialSign) {
-                return game.internal.Sign.EMPTY;
+                return tictactoe.game.internal.Sign.EMPTY;
             }
         }
         return initialSign;
     }
 
-    private game.internal.Sign getRowWinner(int currentRow) {
-        game.internal.Sign initialSign = this.cells[0][currentRow].getSign();
+    private tictactoe.game.internal.Sign getRowWinner(int currentRow) {
+        tictactoe.game.internal.Sign initialSign = this.cells[0][currentRow].getSign();
 
-        if (initialSign == game.internal.Sign.EMPTY) {
+        if (initialSign == tictactoe.game.internal.Sign.EMPTY) {
             return initialSign;
         }
 
         for (int c = 1; c < dimensions.getNumberOfColumns(); c++) {
             if (this.cells[c][currentRow].getSign() != initialSign) {
-                return game.internal.Sign.EMPTY;
+                return tictactoe.game.internal.Sign.EMPTY;
             }
         }
         return initialSign;
     }
 
 
-    private game.internal.Sign getDiagonalWinner(int startRow, int startColumn, int horizontalStep, int verticalStep) {
-        game.internal.Sign initialSign = this.cells[startColumn][startRow].getSign();
-        if (initialSign == game.internal.Sign.EMPTY) {
-            return game.internal.Sign.EMPTY;
+    private tictactoe.game.internal.Sign getDiagonalWinner(int startRow, int startColumn, int horizontalStep, int verticalStep) {
+        tictactoe.game.internal.Sign initialSign = this.cells[startColumn][startRow].getSign();
+        if (initialSign == tictactoe.game.internal.Sign.EMPTY) {
+            return tictactoe.game.internal.Sign.EMPTY;
         }
 
         int r = startRow + verticalStep;
@@ -134,7 +134,7 @@ class Board {
 
         while (r < dimensions.getNumberOfRows() && c < dimensions.getNumberOfColumns()) {
             if (this.cells[c][r].getSign() != initialSign) {
-                return game.internal.Sign.EMPTY;
+                return tictactoe.game.internal.Sign.EMPTY;
             }
             r += verticalStep;
             c += horizontalStep;

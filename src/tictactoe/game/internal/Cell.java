@@ -22,22 +22,24 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game.internal;
 
-class BoardLocation {
-    private int row;
-    private int column;
+class Cell {
+    private Sign sign;
 
-    public BoardLocation(int row, int column) {
-        this.row = row;
-        this.column = column;
+    public Cell() {
+        sign = Sign.EMPTY;
     }
 
-    public int getRow() {
-        return row;
+    public boolean isEmpty() {
+        return sign == Sign.EMPTY;
     }
 
-    public int getColumn() {
-        return column;
+    public Sign getSign() {
+        return sign;
+    }
+
+    public void setSign(Sign sign) {
+        this.sign = sign;
     }
 }

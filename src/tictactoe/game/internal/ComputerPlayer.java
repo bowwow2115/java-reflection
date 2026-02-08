@@ -22,37 +22,24 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game.internal;
 
-class BoardPrinter {
-    private final BoardDimensions dimensions;
+class ComputerPlayer implements Player {
+    private static final String NAME = "Computer";
+    private final ComputerInputProvider locationProvider;
 
-    public BoardPrinter(BoardDimensions dimensions) {
-        this.dimensions = dimensions;
+    public ComputerPlayer(ComputerInputProvider locationProvider) {
+        this.locationProvider = locationProvider;
     }
 
-    public void print(Board board) {
-        printHorizontalBorder();
-
-        printBoard(board);
-
-        printHorizontalBorder();
+    @Override
+    public void play(Board board, Sign sign) {
+        BoardLocation location = locationProvider.provideNextMove(board);
+        board.updateCell(location.getRow(), location.getColumn(), sign);
     }
 
-    private void printBoard(Board board) {
-        for (int r = 0; r < dimensions.getNumberOfRows(); r++) {
-            System.out.print("|");
-            for (int c = 0; c < dimensions.getNumberOfColumns(); c++) {
-                System.out.print(String.format(" %s |", board.getPrintableCellSign(r, c)));
-            }
-            System.out.println();
-        }
-    }
-
-    private void printHorizontalBorder() {
-        for (int c = 0; c < dimensions.getNumberOfColumns() * 4 + 1; c++) {
-            System.out.print("-");
-        }
-        System.out.println();
+    @Override
+    public String getPlayerName() {
+        return NAME;
     }
 }

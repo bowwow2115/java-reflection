@@ -22,20 +22,11 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game.internal;
 
-enum Sign {
-    EMPTY(' '),
-    X('X'),
-    Y('Y');
+interface Player {
 
-    private char value;
+    void play(Board board, Sign sign);
 
-    Sign(char value) {
-        this.value = value;
-    }
-
-    public char getValue() {
-        return this.value;
-    }
+    String getPlayerName();
 }

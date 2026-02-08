@@ -22,24 +22,34 @@
  *  SOFTWARE.
  */
 
-package game.internal;
+package tictactoe.game.internal;
 
-class Cell {
-    private Sign sign;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-    public Cell() {
-        sign = Sign.EMPTY;
+class ComputerInputProvider implements InputProvider {
+    public final BoardDimensions dimensions;
+    private final Random random = new Random();
+
+    public ComputerInputProvider(BoardDimensions dimensions) {
+        this.dimensions = dimensions;
     }
 
-    public boolean isEmpty() {
-        return sign == Sign.EMPTY;
-    }
+    @Override
+    public BoardLocation provideNextMove(Board board) {
+        List<BoardLocation> availableCells = new ArrayList<>();
 
-    public Sign getSign() {
-        return sign;
-    }
+        for (int r = 0; r < dimensions.getNumberOfRows(); r++) {
+            for (int c = 0; c < dimensions.getNumberOfColumns(); c++) {
+                if (board.isCellEmpty(r, c)) {
+                    availableCells.add(new BoardLocation(r, c));
+                }
+            }
+        }
 
-    public void setSign(Sign sign) {
-        this.sign = sign;
+        int chosenCell = random.nextInt(availableCells.size());
+
+        return availableCells.get(chosenCell);
     }
 }

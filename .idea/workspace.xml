@@ -1,42 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="284f80bd-b59f-4123-897c-9a8885e77f31" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="284f80bd-b59f-4123-897c-9a8885e77f31" name="Default Changelist" comment="패키지 구조 변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tic-tac-toe.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/META-INF/database-model.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/BoardDimensions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/BoardLocation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/BoardPrinter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/Cell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/ComputerInputProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/ComputerPlayer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/HumanPlayer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/InputProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/KeyboardInputProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/Sign.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/game/internal/TicTacToeGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/database-model/init/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/BoardDimensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/BoardDimensions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/BoardLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/BoardLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/BoardPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/BoardPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/ComputerInputProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/ComputerInputProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/ComputerPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/ComputerPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/HumanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/InputProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/InputProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/KeyboardInputProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/KeyboardInputProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/Sign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/Sign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/internal/TicTacToeGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/internal/TicTacToeGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/init/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/BoardDimensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/BoardDimensions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/BoardLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/BoardLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/BoardPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/BoardPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/ComputerInputProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/ComputerInputProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/ComputerPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/ComputerPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/HumanPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/InputProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/InputProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/KeyboardInputProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/KeyboardInputProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/Sign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/Sign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/internal/TicTacToeGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/game/internal/TicTacToeGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tictactoe/init/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,16 +133,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/parksh/projects/IntelliJ/OnlineClass/tic-tac-toe",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/parksh/projects/IntelliJ/OnlineClass/Udemy/java-reflection/tic-tac-toe&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -166,7 +151,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="init.Main" />
+      <option name="MAIN_CLASS_NAME" value="tictactoe.init.Main" />
       <module name="tic-tac-toe" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <RunnerSettings RunnerId="Run" />
@@ -192,8 +177,30 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586646869981</updated>
-      <workItem from="1765071467572" duration="311000" />
+      <workItem from="1765071467572" duration="1540000" />
+      <workItem from="1769842199585" duration="597000" />
+      <workItem from="1769937152207" duration="598000" />
+      <workItem from="1769938504722" duration="513000" />
+      <workItem from="1769939029339" duration="179000" />
+      <workItem from="1769939220215" duration="118000" />
+      <workItem from="1769939348069" duration="106000" />
+      <workItem from="1769939488300" duration="1206000" />
+      <workItem from="1770459109416" duration="598000" />
+      <workItem from="1770518359098" duration="598000" />
+      <workItem from="1770521758827" duration="190000" />
+      <workItem from="1770521958153" duration="104000" />
+      <workItem from="1770522071721" duration="236000" />
+      <workItem from="1770522318373" duration="1560000" />
+      <workItem from="1770528749933" duration="51000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1765072255377</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765072255377</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -230,26 +237,42 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="리플렉션을 활용한 IOC 학습" />
+    <MESSAGE value="패키지 구조 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="패키지 구조 변경" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/game/internal/ComputerInputProvider.java</url>
+          <url>file://$PROJECT_DIR$/src/tictactoe/game/internal/ComputerInputProvider.java</url>
           <line>40</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/game/internal/ComputerInputProvider.java</url>
+          <url>file://$PROJECT_DIR$/src/tictactoe/game/internal/ComputerInputProvider.java</url>
           <line>50</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/game/internal/TicTacToeGame.java</url>
+          <url>file://$PROJECT_DIR$/src/tictactoe/game/internal/TicTacToeGame.java</url>
           <line>59</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/game/internal/Board.java</url>
+          <url>file://$PROJECT_DIR$/src/tictactoe/game/internal/Board.java</url>
           <line>126</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
